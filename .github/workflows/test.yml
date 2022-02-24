@@ -20,13 +20,47 @@ jobs:
     - name: run jest tests
       run: npm test
 
-  integration_test_setup:
+  test_pyenv_375:
+    runs-on: ubuntu-latest
+    name: install pyenv
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        path: "pyenv-action"
+    - name: ls
+      run: |
+        pwd
+        ls -la
+    - name: setup pyenv
+      id: pyenv
+      uses: ./pyenv-action
+      with:
+        default: 3.7.5
+
+    - name: List python versions
+      run: pyenv versions
+
+    - name: Verify default installation
+      run: python --version
+
+    - name: list files in pyenv_root
+      run: ls -lhtr ${{ steps.pyenv.outputs.pyenv_root }}
+
+  test_pyenv_375_twice:
     runs-on: ubuntu-latest
     name: install pyenv
     steps:
     - name: setup pyenv
       id: pyenv
-      uses: ./
+      uses: "gabrielfalcao/pyenv-action@master"
+      with:
+        default: 3.7.5
+    - name: setup pyenv
+      id: pyenv
+      uses: "gabrielfalcao/pyenv-action@master"
+      with:
+        default: 3.7.5
 
     - name: List python versions
       run: pyenv versions
