@@ -94,7 +94,7 @@ export class PyEnvInstaller {
       const cache_version = this.pyenv_version;
       const cached_archive = tc.find(cache_key, cache_version);
 
-      if (utils.file_exists(cached_archive)) {
+      if (cached_archive) {
         return accept(path.join(cached_archive, cache_key));
       }
       console.log(`downloading ${this.archive_url}`);
