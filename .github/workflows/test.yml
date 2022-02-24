@@ -39,7 +39,7 @@ jobs:
       with:
         default: 3.7.5
     - name: setup pyenv
-      id: pyenv
+      id: pyenv2
       uses: "ursetto/pyenv-action@cache-fix-test"
       with:
         default: 3.7.5
