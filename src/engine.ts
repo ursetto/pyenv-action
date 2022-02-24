@@ -295,7 +295,7 @@ export class EnvironmentManager {
       const cache_version = version;
 
       const cached_python = tc.find(cache_key, cache_version);
-      if (utils.folder_exists(cached_python)) {
+      if (cached_python) {
         console.log(`Using cached python installation ${version}`);
         return accept(cached_python);
       }
@@ -352,7 +352,7 @@ export class EnvironmentManager {
         `pyenv-${this.pyenv_version}-python`,
         version
       );
-      if (!utils.folder_exists(cached_python)) {
+      if (!cached_python) {
         return reject(
           new Error(`python ${version} was not installed via pyenv`)
         );

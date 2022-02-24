@@ -10850,7 +10850,7 @@ class EnvironmentManager {
                 const cache_key = `pyenv-${this.pyenv_version}-python`;
                 const cache_version = version;
                 const cached_python = tc.find(cache_key, cache_version);
-                if (utils.folder_exists(cached_python)) {
+                if (cached_python) {
                     console.log(`Using cached python installation ${version}`);
                     return accept(cached_python);
                 }
@@ -10900,7 +10900,7 @@ class EnvironmentManager {
             return new Promise((accept, reject) => {
                 const version = this.context.inputs.default_version;
                 const cached_python = tc.find(`pyenv-${this.pyenv_version}-python`, version);
-                if (!utils.folder_exists(cached_python)) {
+                if (!cached_python) {
                     return reject(new Error(`python ${version} was not installed via pyenv`));
                 }
                 exec
