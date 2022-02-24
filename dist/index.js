@@ -10721,8 +10721,9 @@ class PyEnvInstaller {
     installFromArchive(archive_path) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((accept, reject) => {
-                if (utils.file_exists(this.archive_path)) {
-                    return accept(path.join(this.archive_path, `pyenv-${this.pyenv_version}`));
+                const cached_pyenv_root = tc.find('pyenv_root', this.pyenv_version);
+                if (cached_pyenv_root) {
+                    return accept(cached_pyenv_root);
                 }
                 tc.extractZip(archive_path, tc.find('pyenv_archive', this.pyenv_version))
                     .then(inflation_path => {
