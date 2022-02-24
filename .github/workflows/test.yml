@@ -63,7 +63,7 @@ jobs:
       with:
         default: 3.7.5
     - name: setup pyenv
-      id: pyenv
+      id: pyenv2
       uses: "gabrielfalcao/pyenv-action@master"
       with:
         default: 3.7.5
