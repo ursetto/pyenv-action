@@ -35,12 +35,12 @@ jobs:
     steps:
     - name: setup pyenv
       id: pyenv
-      uses: "ursetto/pyenv-action@cache-fix-test"
+      uses: "ursetto/pyenv-action@cache-fix-testing"
       with:
         default: 3.7.5
     - name: setup pyenv
       id: pyenv2
-      uses: "ursetto/pyenv-action@cache-fix-test"
+      uses: "ursetto/pyenv-action@cache-fix-testing"
       with:
         default: 3.7.5
 
